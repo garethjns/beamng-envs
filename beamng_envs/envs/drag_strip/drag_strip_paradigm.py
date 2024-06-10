@@ -52,10 +52,14 @@ class DragStripParadigm(IParadigm):
         car_config = {"vars": {}, "parts": parts_config_requested}
 
         self.vehicle.set_part_config(car_config)
+        self.vehicle.disconnect()
+        self.vehicle.connect(bng=bng_simulation.bng)
+
         bng_simulation.attach_sensors_to_vehicle(self.vehicle)
         bng_simulation.bng.switch_vehicle(self._car_model)
         bng_simulation.remove_debug_paths()
         bng_simulation.add_debug_path(self._path_nodes)
+
         self.vehicle.ai.set_script(self._path_nodes)
 
     def step(

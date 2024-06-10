@@ -58,6 +58,8 @@ class TrackTestParadigm(IParadigm):
         )
 
         self.vehicle.set_part_config(pc)
+        self.vehicle.disconnect()
+        self.vehicle.connect(bng=bng_simulation.bng)
         bng_simulation.attach_sensors_to_vehicle(self.vehicle)
         bng_simulation.bng.switch_vehicle("scintilla")
         self.vehicle.ai_set_mode("manual")

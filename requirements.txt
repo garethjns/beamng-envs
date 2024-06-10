@@ -1,4 +1,4 @@
-beamngpy>=1.26
+beamngpy>=1.29
 numpy
 mlflow
 tqdm
