@@ -21,7 +21,7 @@ from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
 from beamng_envs.bng_sim.bng_sim_worker import BNGSimWorker
 from beamng_envs.bng_sim.bng_sim_worker_pool import BNGSimWorkerPool
 from beamng_envs.cars.cars_and_configs import CarConfigs
-from beamng_envs.envs import TrackTestConfig, CrashTestEnv
+from beamng_envs.envs import CrashTestEnv, TrackTestConfig
 from beamng_envs.envs.crash_test.crash_test_config import CrashTestConfig
 from beamng_envs.envs.crash_test.crash_test_param_space import (
     CrashTestParamSpaceBuilder,

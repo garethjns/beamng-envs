@@ -10,7 +10,7 @@ from tqdm import tqdm
 from beamng_envs import __VERSION__
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
 from beamng_envs.cars.cars_and_configs import CarConfigs
-from beamng_envs.envs import CrashTestEnv, CrashTestParamSpaceBuilder, CrashTestConfig
+from beamng_envs.envs import CrashTestConfig, CrashTestEnv, CrashTestParamSpaceBuilder
 from scripts.args_batch import PARSER_BATCH
 
 
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     # Create env and run
     env = CrashTestEnv(
         config=crash_test_config,
-        params=param_space_space_builder.param_space_gym.sample()
+        params=param_space_space_builder.param_space_gym.sample(),
     )
     results, history = env.run()
 

@@ -1,8 +1,9 @@
 """
 Run the DragStrip environment a number of times, load and compare results.
 """
+
 import os
-from typing import Optional, Dict, Any
+from typing import Any, Dict, Optional
 
 import mlflow
 from beamngpy import BeamNGpy
@@ -11,7 +12,6 @@ from tqdm import tqdm
 
 from beamng_envs import __VERSION__
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
-
 from beamng_envs.envs.drag_strip.drag_strip_config import DragStripConfig
 from beamng_envs.envs.drag_strip.drag_strip_env import DragStripEnv
 from beamng_envs.envs.history import History
@@ -19,10 +19,9 @@ from scripts.args_batch import PARSER_BATCH
 
 
 def plot_drag_strip(
-        env_history: History,
-        label: str = "",
-        filename: Optional[str] = None,
-
+    env_history: History,
+    label: str = "",
+    filename: Optional[str] = None,
 ):
     fig, ax = plt.subplots()
 
@@ -57,11 +56,7 @@ if __name__ == "__main__":
     )
     bng = BeamNGpy(**config.bng_config.__dict__)
 
-    env = DragStripEnv(
-        params=DragStripEnv.param_space.sample(),
-        config=config,
-        bng=bng
-    )
+    env = DragStripEnv(params=DragStripEnv.param_space.sample(), config=config, bng=bng)
     results, _ = env.run()
 
     plot_drag_strip(

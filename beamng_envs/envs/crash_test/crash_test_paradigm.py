@@ -2,7 +2,7 @@ import copy
 from typing import Any, Dict, Optional, Tuple
 
 import numpy as np
-from beamngpy import Vehicle, Scenario
+from beamngpy import Scenario, Vehicle
 
 from beamng_envs.bng_sim.bng_sim import BNGSim
 from beamng_envs.interfaces.paradigm import IParadigm

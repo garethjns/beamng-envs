@@ -1,7 +1,7 @@
 beamngpy>=1.29
-numpy
-mlflow
-tqdm
 gym
+mlflow
+numpy
 pandas
 ruamel-yaml
+tqdm

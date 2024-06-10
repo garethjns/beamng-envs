@@ -1,7 +1,7 @@
 import copy
 from typing import Any, Dict, Optional, Tuple
 
-from beamngpy import Vehicle, Scenario
+from beamngpy import Scenario, Vehicle
 from gym import Space
 
 from beamng_envs.bng_sim.bng_sim import BNGSim

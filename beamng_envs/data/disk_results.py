@@ -7,11 +7,11 @@ import uuid
 import warnings
 from distutils.dir_util import copy_tree
 from distutils.errors import DistutilsFileError
-from typing import Union, Dict, Any, Optional
+from typing import Any, Dict, Optional, Union
 
 import pandas as pd
 
-from beamng_envs import __VERSION__, __BNG_VERSION__
+from beamng_envs import __BNG_VERSION__, __VERSION__
 from beamng_envs.data.numpy_json_encoder import NumpyJSONEncoder
 
 

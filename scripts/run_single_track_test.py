@@ -11,6 +11,7 @@ python -m scripts.run_single_track_test --beamng_path '' --beamng_user_path ''
 ````
 
 """
+
 from typing import Optional
 
 import beamngpy
@@ -66,7 +67,7 @@ def plot_track(ts_df: pd.DataFrame, filename: Optional[str] = None):
         ts_df["time_s"], ts_df["electrics_throttle_0"], label="Throttle", linewidth=2
     )
     ax[1].plot(ts_df["time_s"], ts_df["electrics_brake_0"], label="Brake", linewidth=2)
-    gear = ts_df["electrics_gear_0"].str.extract('(\d+)').fillna(0).astype(int)
+    gear = ts_df["electrics_gear_0"].str.extract("(\d+)").fillna(0).astype(int)
     ax[1].plot(ts_df["time_s"], gear)
     ax[1].set_ylabel("Normalised value", fontweight="bold")
     ax[1].legend(prop={"weight": "bold"})

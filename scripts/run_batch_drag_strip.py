@@ -1,6 +1,7 @@
 """
 Run the DragStrip environment a number of times, load and compare results.
 """
+
 import os
 
 import mlflow
@@ -10,7 +11,6 @@ from tqdm import tqdm
 
 from beamng_envs import __VERSION__
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
-
 from beamng_envs.envs.drag_strip.drag_strip_config import DragStripConfig
 from beamng_envs.envs.drag_strip.drag_strip_env import DragStripEnv
 from scripts.args_batch import PARSER_BATCH
@@ -45,8 +45,8 @@ if __name__ == "__main__":
                 env_history=env.history,
                 label=f"run {run}",
                 filename=os.path.join(
-                    env.disk_results.output_path,
-                    "drag_strip_plot.png"),
+                    env.disk_results.output_path, "drag_strip_plot.png"
+                ),
             )
 
             # Log to MLflow

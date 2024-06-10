@@ -1,4 +1,4 @@
-from gym.spaces import Dict, Box
+from gym.spaces import Box, Dict
 
 TRACK_TEST_PARAM_SPACE = dict(
     brake_strength=dict(

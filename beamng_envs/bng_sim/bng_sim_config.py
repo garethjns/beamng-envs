@@ -1,5 +1,5 @@
 import warnings
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig

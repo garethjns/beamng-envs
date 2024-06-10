@@ -10,9 +10,9 @@ from beamng_envs.envs.crash_test.crash_test_param_space import (
     CrashTestParamSpaceBuilder,
 )
 from beamng_envs.envs.history import History
+from tests.common.tidy_test_case import TidyTestCase
 from tests.mocks.mock_beamng_simulation import MockBNGSimulation
 from tests.mocks.mock_vehicle import MockVehicle
-from tests.common.tidy_test_case import TidyTestCase
 
 PARADIGM_PATH = "beamng_envs.envs.crash_test.crash_test_paradigm"
 

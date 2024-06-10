@@ -1,4 +1,5 @@
 """Run a number of samples of car configs in the TrackTestEnv, with logging to MLflow."""
+
 import os
 
 import beamngpy
@@ -8,7 +9,6 @@ from tqdm import tqdm
 
 from beamng_envs import __VERSION__
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
-
 from beamng_envs.envs.track_test.track_test_config import TrackTestConfig
 from beamng_envs.envs.track_test.track_test_env import TrackTestEnv
 from beamng_envs.envs.track_test.track_test_param_space import (

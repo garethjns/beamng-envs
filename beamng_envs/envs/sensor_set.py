@@ -1,9 +1,9 @@
 import copy
 from dataclasses import dataclass
-from typing import Dict, Any
+from typing import Any, Dict
 
 from beamngpy import Vehicle
-from beamngpy.sensors import State, Electrics, GForces, Damage, Sensor
+from beamngpy.sensors import Damage, Electrics, GForces, Sensor, State
 
 
 @dataclass
