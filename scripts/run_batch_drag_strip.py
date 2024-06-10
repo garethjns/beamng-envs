@@ -14,7 +14,7 @@ from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
 from beamng_envs.envs.drag_strip.drag_strip_config import DragStripConfig
 from beamng_envs.envs.drag_strip.drag_strip_env import DragStripEnv
 from scripts.args_batch import PARSER_BATCH
-
+from scripts.run_single_drag_strip import plot_drag_strip
 
 if __name__ == "__main__":
     opt = PARSER_BATCH.parse_args()
@@ -41,18 +41,13 @@ if __name__ == "__main__":
             env = DragStripEnv(params=params, config=config, bng=bng)
             results, _ = env.run()
 
-            fig, ax = plt.subplots()
-            ax.plot(
-                env.history["time_s"],
-                [t["state"]["pos"][0] for t in env.history["car_state"]],
+            plot_drag_strip(
+                env_history=env.history,
                 label=f"run {run}",
+                filename=os.path.join(
+                    env.disk_results.output_path,
+                    "drag_strip_plot.png"),
             )
-            ax.set_xlabel("Time")
-            ax.set_ylabel("Distance travelled")
-            ax.legend()
-            filename = os.path.join(env.disk_results.output_path, "drag_strip_plot.png")
-            plt.savefig(filename)
-            plt.close(fig)
 
             # Log to MLflow
             params.update({"version": __VERSION__})

@@ -90,7 +90,7 @@ It's possible to run environments in multiple BeamNG instances simultaneously. S
 ### Viewing results
 The `DiskResults` class can be used to load saved results from an environment output folder or from an on disk MLflow experiment. It automates loading the saved json data into Pandas formats.
 
-Foe example to load the results from an experiment and to access the timeseries sensor data and other scalar params/results:
+For example to load the results from an experiment and to access the timeseries sensor data and other scalar params/results:
 ```python
 from beamng_envs.data.disk_results import DiskResults
 
@@ -118,15 +118,16 @@ http://0.0.0.0:5555
 
 # Compatibility
 
-Each version of the Beamng python api supports specific versions of Beamng -
+Each version of the BeamNG python api supports specific versions of BeamNG -
 see https://github.com/BeamNG/BeamNGpy#compatibility
 
 The environments here are compatible with the following versions:
 
-| Beamng version | beamngpy version | beamng-envs version | Supported envs                     |
-|----------------|------------------|---------------------|------------------------------------|
-| 0.28           | 1.26             | 0.5.0               | Track test, crash test, drag strip |
-| 0.28           | 1.26             | 0.3.0 - 0.4.0       | Track test                         |
-| 0.27           | 1.25             | 0.3.0               | Track test                         |
-| 0.26           | 1.24             | 0.2.0               | Track test                         |
-| 0.24           | 1.22             | 0.1.0               | Track test                         |
+| Python version | BeamNG version | `beamngpy` version | `beamng-envs` version | Supported envs                     |
+|----------------|----------------|--------------------|-----------------------|------------------------------------|
+| 3.9            | 0.32           | 1.29               | 0.6.0                 | Track test, crash test, drag strip |
+| 3.9            | 0.28           | 1.26               | 0.5.0                 | Track test, crash test, drag strip |
+| 3.9            | 0.28           | 1.26               | 0.3.0 - 0.4.0         | Track test                         |
+| 3.9            | 0.27           | 1.25               | 0.3.0                 | Track test                         |
+| 3.9            | 0.26           | 1.24               | 0.2.0                 | Track test                         |
+| 3.9            | 0.24           | 1.22               | 0.1.0                 | Track test                         |
