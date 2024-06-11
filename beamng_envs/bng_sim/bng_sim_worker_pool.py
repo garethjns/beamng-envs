@@ -25,7 +25,7 @@ class BNGSimWorkerPool:
                     worker = w
                 break
             else:
-                print(f"Bool busy, still looking for a worker.")
+                print(f"Pool busy, still looking for a worker.")
                 time.sleep(np.random.uniform(1, 2))
 
         else:
