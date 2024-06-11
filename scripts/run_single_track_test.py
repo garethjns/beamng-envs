@@ -11,6 +11,7 @@ python -m scripts.run_single_track_test --beamng_path '' --beamng_user_path ''
 ````
 
 """
+
 from typing import Optional
 
 import beamngpy
@@ -27,6 +28,7 @@ from beamng_envs.envs.track_test.track_test_param_space import (
     TRACK_TEST_PARAM_SPACE_GYM,
 )
 from scripts.args_batch import PARSER_BATCH
+from scripts.args_single import PARSER_SINGLE
 
 
 def plot_track(ts_df: pd.DataFrame, filename: Optional[str] = None):
@@ -65,9 +67,7 @@ def plot_track(ts_df: pd.DataFrame, filename: Optional[str] = None):
         ts_df["time_s"], ts_df["electrics_throttle_0"], label="Throttle", linewidth=2
     )
     ax[1].plot(ts_df["time_s"], ts_df["electrics_brake_0"], label="Brake", linewidth=2)
-    ax[1].plot(
-        ts_df["time_s"], ts_df["electrics_gear_0"] / 6, label="Gear", linewidth=2
-    )
+    ax[1].plot(ts_df["time_s"], ts_df["electrics_gear_0"])
     ax[1].set_ylabel("Normalised value", fontweight="bold")
     ax[1].legend(prop={"weight": "bold"})
 
@@ -84,10 +84,10 @@ def plot_track(ts_df: pd.DataFrame, filename: Optional[str] = None):
 
 
 if __name__ == "__main__":
-    opt = PARSER_BATCH.parse_args()
+    opt = PARSER_SINGLE.parse_args()
 
     # Setup Python logging to include BeamNG console output
-    # beamngpy.set_up_simple_logging()
+    beamngpy.set_up_simple_logging()
 
     # Prepare config
     # The BeamNGConfig can be specified here, and will be used to create a game instance if the env isn't passed an

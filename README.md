@@ -14,7 +14,7 @@ BeamNG.drive/tech based simulation environments.
 4. Create a ```mods``` directory with the version of BeamNG, eg. ```/beamng_workspace/0.25/mods/```
 5. Put the ```BeamNGpy.zip``` file included in this repo into the directory created in step 4.
 6. Setup a python environment, e.g using Conda:
-   ```bash 
+   ```bash
    conda create -y --name beamng-envs python=3.8
    conda activate beamng-envs
    ```
@@ -55,25 +55,25 @@ There are a number of scripts that demo running an environment and collecting th
 The MLflow logging shown in the examples is optional; full results are saved to disk in the output directory in json format.
 
 ### Track Test
-![Track test](images/readme_example.gif)  
-Sets a car config for the Scintila Rally car, use an AI to drive a lap of the track, and record lap time and sensor data.  
+![Track test](images/readme_example.gif)
+Sets a car config for the Scintila Rally car, use an AI to drive a lap of the track, and record lap time and sensor data.
 
 ```bash
 python -m scripts.run_batch_track_tests -N 5 --beamng_path /SteamLibrary/steamapps/common/BeamNG.drive --beamng_user_path /beamng_workspace/
 ```
 
 ### Crash test
-![Crash test](images/readme_crash_example.gif)  
-Searches for all available car templates, selects one, then drive it into a barrier in the destruction section of grid map v2 at a set speed. Records sensor data.  
+![Crash test](images/readme_crash_example.gif)
+Searches for all available car templates, selects one, then drive it into a barrier in the destruction section of grid map v2 at a set speed. Records sensor data.
 
 ```bash
 python -m scripts.run_batch_crash_tests -N 5 --beamng_path /SteamLibrary/steamapps/common/BeamNG.drive --beamng_user_path /beamng_workspace/
 ```
 
 ### Drag strip
-![Drag strip](images/readme_drag_example.gif)   
+![Drag strip](images/readme_drag_example.gif)
 
-Selects a totally random part config for the Hirochi Sunburst car, then races it down the drag strip in grid map v2. Records time, speed, etc. along with sensor data.    
+Selects a totally random part config for the Hirochi Sunburst car, then races it down the drag strip in grid map v2. Records time, speed, etc. along with sensor data.
 
 ```bash
 python -m scripts.run_batch_drag_strip -N 5 --beamng_path /SteamLibrary/steamapps/common/BeamNG.drive --beamng_user_path /beamng_workspace/
@@ -81,7 +81,7 @@ python -m scripts.run_batch_drag_strip -N 5 --beamng_path /SteamLibrary/steamapp
 
 
 ## Parallel running
-![Crash test parallel](images/readme_parallel_example.gif)  
+![Crash test parallel](images/readme_parallel_example.gif)
 
 It's possible to run environments in multiple BeamNG instances simultaneously. See [run_batch_parallel_crash_tests.py](scripts/run_batch_parallel_crash_tests.py) for an example.
 
@@ -90,7 +90,7 @@ It's possible to run environments in multiple BeamNG instances simultaneously. S
 ### Viewing results
 The `DiskResults` class can be used to load saved results from an environment output folder or from an on disk MLflow experiment. It automates loading the saved json data into Pandas formats.
 
-Foe example to load the results from an experiment and to access the timeseries sensor data and other scalar params/results:
+For example to load the results from an experiment and to access the timeseries sensor data and other scalar params/results:
 ```python
 from beamng_envs.data.disk_results import DiskResults
 
@@ -118,15 +118,16 @@ http://0.0.0.0:5555
 
 # Compatibility
 
-Each version of the Beamng python api supports specific versions of Beamng -
+Each version of the BeamNG python api supports specific versions of BeamNG -
 see https://github.com/BeamNG/BeamNGpy#compatibility
 
 The environments here are compatible with the following versions:
 
-| Beamng version | beamngpy version | beamng-envs version | Supported envs                     |
-|----------------|------------------|---------------------|------------------------------------|
-| 0.28           | 1.26             | 0.5.0               | Track test, crash test, drag strip |
-| 0.28           | 1.26             | 0.3.0 - 0.4.0       | Track test                         |
-| 0.27           | 1.25             | 0.3.0               | Track test                         |
-| 0.26           | 1.24             | 0.2.0               | Track test                         |
-| 0.24           | 1.22             | 0.1.0               | Track test                         |
+| Python version | BeamNG version | `beamngpy` version | `beamng-envs` version | Supported envs                     |
+|----------------|----------------|--------------------|-----------------------|------------------------------------|
+| 3.9, 3.11      | 0.32           | 1.29               | 0.6.0                 | Track test, crash test, drag strip |
+| 3.9            | 0.28           | 1.26               | 0.5.0                 | Track test, crash test, drag strip |
+| 3.9            | 0.28           | 1.26               | 0.3.0 - 0.4.0         | Track test                         |
+| 3.9            | 0.27           | 1.25               | 0.3.0                 | Track test                         |
+| 3.9            | 0.26           | 1.24               | 0.2.0                 | Track test                         |
+| 3.9            | 0.24           | 1.22               | 0.1.0                 | Track test                         |

@@ -1,5 +1,5 @@
 import warnings
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
@@ -15,7 +15,7 @@ class BNGSimConfig:
     error_on_out_of_time: bool = False
 
     # The BeamNG specific config; passed to BeamNGpy
-    bng_config: BeamNGPyConfig = BeamNGPyConfig()
+    bng_config: BeamNGPyConfig = field(default_factory=lambda: BeamNGPyConfig())
 
     # Path to save results to
     output_path: str = "results"

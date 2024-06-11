@@ -1,7 +1,7 @@
 import time
-from typing import Optional, List, Dict, Any
+from typing import Any, Dict, List, Optional
 
-from beamngpy import BeamNGpy, Vehicle, Scenario
+from beamngpy import BeamNGpy, Scenario, Vehicle
 
 from beamng_envs.bng_sim.bng_sim_config import BNGSimConfig
 from beamng_envs.envs.errors import OutOfTimeException

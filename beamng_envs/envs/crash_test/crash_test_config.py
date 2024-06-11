@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
-from beamng_envs.cars.cars_and_configs import CarConfigs
 from beamng_envs.bng_sim.bng_sim_config import BNGSimConfig
+from beamng_envs.cars.cars_and_configs import CarConfigs
 
 
 @dataclass

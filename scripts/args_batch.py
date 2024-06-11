@@ -10,7 +10,7 @@ PARSER_BATCH = argparse.ArgumentParser()
 PARSER_BATCH.add_argument(
     "--beamng_path",
     type=str,
-    default="T:/SteamLibrary/steamapps/common/BeamNG.drive/",
+    default="C:\Program Files (x86)\Steam\steamapps\common\BeamNG.drive",
     help="Path to the folder containing Bin64/BeamNG.tech.x64.exe or Bin64/BeamNG.drive.x64.exe.",
 )
 PARSER_BATCH.add_argument(

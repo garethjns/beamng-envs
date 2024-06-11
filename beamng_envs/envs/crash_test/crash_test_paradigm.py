@@ -2,7 +2,7 @@ import copy
 from typing import Any, Dict, Optional, Tuple
 
 import numpy as np
-from beamngpy import Vehicle, Scenario
+from beamngpy import Scenario, Vehicle
 
 from beamng_envs.bng_sim.bng_sim import BNGSim
 from beamng_envs.interfaces.paradigm import IParadigm
@@ -79,6 +79,9 @@ class CrashTestParadigm(IParadigm):
             bng_simulation.config.car_configs.configs[self.params["car_config_name"]]
         )
         self.vehicle.set_part_config(parts_config)
+        self.vehicle.disconnect()
+        self.vehicle.connect(bng=bng_simulation.bng)
+
         bng_simulation.attach_sensors_to_vehicle(self.vehicle)
         bng_simulation.bng.switch_vehicle(self.vehicle)
 

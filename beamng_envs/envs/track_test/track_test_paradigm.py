@@ -1,11 +1,11 @@
-from typing import Dict, Any, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 from beamngpy import Scenario, Vehicle
 from beamngpy.types import Float3
 
-from beamng_envs.cars.scintilla_rally import ScintillaRally
 from beamng_envs.bng_sim.bng_sim import BNGSim
+from beamng_envs.cars.scintilla_rally import ScintillaRally
 from beamng_envs.interfaces.paradigm import IParadigm
 from beamng_envs.interfaces.types import WAYPOINT_TYPE
 
@@ -58,6 +58,8 @@ class TrackTestParadigm(IParadigm):
         )
 
         self.vehicle.set_part_config(pc)
+        self.vehicle.disconnect()
+        self.vehicle.connect(bng=bng_simulation.bng)
         bng_simulation.attach_sensors_to_vehicle(self.vehicle)
         bng_simulation.bng.switch_vehicle("scintilla")
         self.vehicle.ai_set_mode("manual")

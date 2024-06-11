@@ -1,5 +1,5 @@
 import copy
-from typing import Optional, Dict, Iterable, Any, Tuple
+from typing import Any, Dict, Iterable, Optional, Tuple
 
 import numpy as np
 from beamngpy import BeamNGpy

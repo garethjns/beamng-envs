@@ -1,4 +1,4 @@
-from typing import Dict, Any, List, Callable
+from typing import Any, Callable, Dict, List
 from unittest.mock import MagicMock
 
 

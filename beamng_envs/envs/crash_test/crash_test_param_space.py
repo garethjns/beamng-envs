@@ -1,6 +1,6 @@
 import copy
 import glob
-from typing import Optional, Any
+from typing import Any, Optional
 
 from gym.spaces import Dict, Text
 

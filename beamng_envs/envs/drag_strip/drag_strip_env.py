@@ -1,9 +1,9 @@
-from typing import Optional, Dict, Iterable, Any, Tuple
+from typing import Any, Dict, Iterable, Optional, Tuple
 
 from beamngpy import BeamNGpy
 
-from beamng_envs.data.disk_results import DiskResults
 from beamng_envs.bng_sim.bng_sim import BNGSim
+from beamng_envs.data.disk_results import DiskResults
 from beamng_envs.envs.drag_strip.drag_strip_config import DragStripConfig
 from beamng_envs.envs.drag_strip.drag_strip_paradigm import DragStripParadigm
 from beamng_envs.envs.drag_strip.drag_strip_param_space import (

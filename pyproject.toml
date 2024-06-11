@@ -6,3 +6,6 @@ version_variable = [
 branch = "main"
 upload_to_pypi = false
 upload_to_release = true
+
+[tool.isort]
+profile = "black"
