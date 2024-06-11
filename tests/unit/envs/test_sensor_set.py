@@ -14,7 +14,8 @@ class TestSensorSet(unittest.TestCase):
             "g_forces",
             "electrics",
             "damage",
-        }  # No IMU at the moment
+            "timer",
+        }
 
         # Act
         sensors = self._sut.sensors

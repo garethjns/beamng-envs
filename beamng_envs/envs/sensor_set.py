@@ -3,7 +3,7 @@ from dataclasses import dataclass
 from typing import Any, Dict
 
 from beamngpy import Vehicle
-from beamngpy.sensors import Damage, Electrics, GForces, Sensor, State
+from beamngpy.sensors import Damage, Electrics, GForces, Sensor, State, Timer
 
 
 @dataclass
@@ -20,7 +20,7 @@ class SensorSet:
             electrics=Electrics(),
             g_forces=GForces(),
             damage=Damage(),
-            # imu=IMU(pos=(0, 0, 0), name='imu'),  # Causing LUA error on attach
+            timer=Timer(),
         )
 
     @property
