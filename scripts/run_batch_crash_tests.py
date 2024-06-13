@@ -1,10 +1,7 @@
 import os
 import pprint
-from typing import Optional
 
 import mlflow
-import pandas as pd
-from matplotlib import pyplot as plt
 from tqdm import tqdm
 
 from beamng_envs import __VERSION__

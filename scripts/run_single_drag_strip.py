@@ -2,15 +2,11 @@
 Run the DragStrip environment a number of times, load and compare results.
 """
 
-import os
-from typing import Any, Dict, Optional
+from typing import Optional
 
-import mlflow
 from beamngpy import BeamNGpy
 from matplotlib import pyplot as plt
-from tqdm import tqdm
 
-from beamng_envs import __VERSION__
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
 from beamng_envs.envs.drag_strip.drag_strip_config import DragStripConfig
 from beamng_envs.envs.drag_strip.drag_strip_env import DragStripEnv

@@ -6,7 +6,6 @@ import os
 
 import mlflow
 from beamngpy import BeamNGpy
-from matplotlib import pyplot as plt
 from tqdm import tqdm
 
 from beamng_envs import __VERSION__

@@ -121,13 +121,14 @@ http://0.0.0.0:5555
 Each version of the BeamNG python api supports specific versions of BeamNG -
 see https://github.com/BeamNG/BeamNGpy#compatibility
 
-The environments here are compatible with the following versions:
+The environments here are compatible with the following versions. Unlisted combinations may also work, but haven't been tested:
 
-| Python version | BeamNG version | `beamngpy` version | `beamng-envs` version | Supported envs                     |
-|----------------|----------------|--------------------|-----------------------|------------------------------------|
-| 3.9, 3.11      | 0.32           | 1.29               | 0.6.0                 | Track test, crash test, drag strip |
-| 3.9            | 0.28           | 1.26               | 0.5.0                 | Track test, crash test, drag strip |
-| 3.9            | 0.28           | 1.26               | 0.3.0 - 0.4.0         | Track test                         |
-| 3.9            | 0.27           | 1.25               | 0.3.0                 | Track test                         |
-| 3.9            | 0.26           | 1.24               | 0.2.0                 | Track test                         |
-| 3.9            | 0.24           | 1.22               | 0.1.0                 | Track test                         |
+| Python version | BeamNG version | `beamngpy` version | `beamng-envs` version | Supported envs                                    |
+|----------------|----------------|--------------------|-----------------------|---------------------------------------------------|
+| 3.11           | 0.32           | 1.29               | 0.7.0                 | Track test, crash test, drag strip, battery test  |
+| 3.9, 3.11      | 0.32           | 1.29               | 0.6.0                 | Track test, crash test, drag strip                |
+| 3.9            | 0.28           | 1.26               | 0.5.0                 | Track test, crash test, drag strip                |
+| 3.9            | 0.28           | 1.26               | 0.3.0 - 0.4.0         | Track test                                        |
+| 3.9            | 0.27           | 1.25               | 0.3.0                 | Track test                                        |
+| 3.9            | 0.26           | 1.24               | 0.2.0                 | Track test                                        |
+| 3.9            | 0.24           | 1.22               | 0.1.0                 | Track test                                        |

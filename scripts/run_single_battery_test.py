@@ -1,26 +1,26 @@
 """
-Runs a single track test, plots results.
+Runs a single battery test, plots results.
 
-For running batches of experiments, see scripts/run_batch_track_tests.py
+For running batches of experiments, see scripts/run_batch_battery_tests.py
 
 To run, install requirements and call specifying beamng_path options (see readme)
 
 ````
 pip install -r scripts/requirements.txt
-python -m scripts.run_single_track_test --beamng_path '' --beamng_user_path ''
+python -m scripts.run_single_battery_test --beamng_path '' --beamng_user_path ''
 ````
 
 """
 
 import beamngpy
-import numpy as np
+from matplotlib import pyplot as plt
 
 from beamng_envs.bng_sim.beamngpy_config import BeamNGPyConfig
 from beamng_envs.data.disk_results import DiskResults
-from beamng_envs.envs.track_test.track_test_config import TrackTestConfig
-from beamng_envs.envs.track_test.track_test_env import TrackTestEnv
-from beamng_envs.envs.track_test.track_test_param_space import (
-    TRACK_TEST_PARAM_SPACE_GYM,
+from beamng_envs.envs.battery_test.battery_test_config import BatteryTestConfig
+from beamng_envs.envs.battery_test.battery_test_env import BatteryTestEnv
+from beamng_envs.envs.battery_test.battery_test_param_space import (
+    BATTERY_TEST_PARAM_SPACE_GYM,
 )
 from scripts.args_single import PARSER_SINGLE
 
@@ -33,17 +33,18 @@ if __name__ == "__main__":
     # Prepare config
     # The BeamNGConfig can be specified here, and will be used to create a game instance if the env isn't passed an
     # existing one.
-    track_test_config = TrackTestConfig(
+    battery_test_config = BatteryTestConfig(
         close_on_done=True,
+        max_time=180,
         output_path=opt.output_path,
         bng_config=BeamNGPyConfig(home=opt.beamng_path, user=opt.beamng_user_path),
     )
 
     # Sample a single set of parameters
-    p_set = TRACK_TEST_PARAM_SPACE_GYM.sample()
+    p_set = BATTERY_TEST_PARAM_SPACE_GYM.sample()
 
     # Run the test for each set of parameters
-    env = TrackTestEnv(params=p_set, config=track_test_config)
+    env = BatteryTestEnv(params=p_set, config=battery_test_config)
 
     # Run the env
     results, history = env.run()
@@ -55,7 +56,14 @@ if __name__ == "__main__":
     timeseries_df = full_results.ts_df
 
     full_results.plot_track(
-        row_2_series=["electrics_throttle_0", "electrics_brake_0", "electrics_gear_0"],
-        row_3_series=["damage_damage_0"],
+        row_2_series=[
+            "electrics_throttle_input_0",
+            "electrics_brake_0",
+        ],
+        row_3_series=["electrics_fuel_0"],
     )
-    print(f"Lap time: {np.round(results['time_s'],2)}s")
+
+    plt.plot(
+        timeseries_df["distance_traveled_total"], timeseries_df["electrics_fuel_0"]
+    )
+    plt.show()
