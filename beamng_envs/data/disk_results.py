@@ -7,9 +7,12 @@ import uuid
 import warnings
 from distutils.dir_util import copy_tree
 from distutils.errors import DistutilsFileError
-from typing import Any, Dict, Optional, Union
+from typing import Any, Dict, List, Optional, Union
 
+import numpy as np
 import pandas as pd
+from matplotlib import pyplot as plt
+from matplotlib.collections import LineCollection
 
 from beamng_envs import __BNG_VERSION__, __VERSION__
 from beamng_envs.data.numpy_json_encoder import NumpyJSONEncoder
@@ -169,7 +172,10 @@ class DiskResults:
                     dfs.append(df)
             else:
                 # Any singular values saved; column named with original name.
-                df = pd.DataFrame(data=[sensor_data], columns=[sensor])
+                df = pd.DataFrame(
+                    data=[t[sensor] for t in self.history[car_state_key]],
+                    columns=[sensor],
+                )
                 dfs.append(df)
 
         return pd.concat(
@@ -289,3 +295,65 @@ class DiskResults:
         )
 
         return results
+
+    def plot_track(
+        self,
+        row_2_series: List[str],
+        row_3_series: List[str],
+        filename: Optional[str] = None,
+        zoom: float = 1.3,
+    ):
+        """
+        Plot track position coloured by speed, and some sample timelines (throttle, brake, gear)
+
+        :param ts_df: The timeseries DataFrame, e.g. from TrackTestDiskResults(path).ts_df.
+        :param filename: Optional filename to save plot to, if not set calls plt.show() instead.
+        """
+        fig, ax = plt.subplots(nrows=3, figsize=(12, 9))
+        points = np.array(
+            [
+                self.ts_df["state_pos_0"].values.squeeze(),
+                self.ts_df["state_pos_1"].values.squeeze(),
+            ]
+        ).T.reshape(-1, 1, 2)
+        segments = np.concatenate([points[:-1], points[1:]], axis=1)
+        velocity = (
+            np.sqrt(
+                self.ts_df["state_vel_0"] ** 2
+                + self.ts_df["state_vel_1"] ** 2
+                + self.ts_df["state_vel_2"] ** 2
+            )
+            * 3.6
+        ).values[1::]
+        norm = plt.Normalize(min(velocity), max(velocity))
+        lc = LineCollection(segments, cmap="inferno", norm=norm)
+        lc.set_array(velocity)
+        lc.set_linewidth(20)
+        line = ax[0].add_collection(lc)
+        ax[0].set_xlim(
+            self.ts_df["state_pos_0"].min() * zoom,
+            self.ts_df["state_pos_0"].max() * zoom,
+        )
+        ax[0].set_ylim(
+            self.ts_df["state_pos_1"].min() * zoom,
+            self.ts_df["state_pos_1"].max() * zoom,
+        )
+        fig.colorbar(line, ax=ax[0], aspect=8, label="velocity")
+        ax[0].set_title("Track position", fontweight="bold")
+
+        for s in row_2_series:
+            ax[1].plot(self.ts_df["time_s"], self.ts_df[s], label=s, linewidth=2)
+        ax[1].set_ylabel("Normalised value", fontweight="bold")
+        ax[1].legend(prop={"weight": "bold"})
+
+        for s in row_3_series:
+            ax[2].plot(self.ts_df["time_s"], self.ts_df[s], label=s, linewidth=2)
+        ax[2].legend(prop={"weight": "bold"})
+        ax[2].set_xlabel("Time, s", fontweight="bold")
+        ax[2].set_ylabel("Normalised value", fontweight="bold")
+
+        fig.tight_layout()
+        if filename is not None:
+            plt.savefig(filename)
+        else:
+            plt.show()
