@@ -2,12 +2,12 @@ from typing import Any, Dict, List, Optional, Tuple
 
 import numpy as np
 from beamngpy import Scenario, Vehicle
-from beamngpy.types import Float3
 
 from beamng_envs.bng_sim.bng_sim import BNGSim
 from beamng_envs.cars.scintilla_rally import ScintillaRally
 from beamng_envs.interfaces.paradigm import IParadigm
 from beamng_envs.interfaces.types import WAYPOINT_TYPE
+from beamng_envs.maths import euclidean_distance_3d
 
 
 class TrackTestParadigm(IParadigm):
@@ -80,10 +80,10 @@ class TrackTestParadigm(IParadigm):
         sensor_data = bng_simulation.poll_sensors_for_vehicle(self.vehicle)
 
         # Check if close enough to next waypoint yet
-        dist = self._euclidean_distance(
+        dist = euclidean_distance_3d(
             pos_1=self.vehicle.state["pos"], pos_2=self._current_waypoint["pos"]
         )
-        dist_to_finish = self._euclidean_distance(
+        dist_to_finish = euclidean_distance_3d(
             pos_1=self.vehicle.state["pos"], pos_2=self._route[-1]["pos"]
         )
 
@@ -124,7 +124,7 @@ class TrackTestParadigm(IParadigm):
         self.done = self.finished or bng_simulation.check_time_limit(self.current_step)
         self.current_step += 1
 
-        sensor_data["dist_to_next_waypoint"] = dist
+        sensor_data["distance_to_next_waypoint"] = dist
         sensor_data["current_waypoint"] = self._current_waypoint
         sensor_data["current_waypoint_idx"] = self._current_waypoint_idx
 
@@ -139,7 +139,3 @@ class TrackTestParadigm(IParadigm):
         self.done = False
         self.finished = False
         self.current_step = 0
-
-    @staticmethod
-    def _euclidean_distance(pos_1: Float3, pos_2: Float3) -> float:
-        return np.sqrt(np.sum((np.array(pos_1) - np.array(pos_2)) ** 2))

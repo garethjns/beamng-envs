@@ -2,6 +2,8 @@ from typing import Any, Dict
 
 
 class ESBR800:
+    """Hirochi SBR4 -> eSBR 800."""
+
     @property
     def config(self) -> Dict[str, Any]:
         return {"parts": self.parts, "vars": self.vars, "paints": {}}
