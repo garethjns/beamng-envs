@@ -11,7 +11,7 @@ try:
 except FileNotFoundError:
     long_description = ""
 
-REQS_CORE = ["beamngpy>=1.26.0", "numpy", "gym", "pandas", "ruamel-yaml"]
+REQS_CORE = ["beamngpy>=1.29.0", "numpy", "gym", "pandas", "ruamel-yaml"]
 RES_FULL = ["mlflow", "tqdm"]
 
 setuptools.setup(
@@ -25,12 +25,12 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     classifiers=[
         "Development Status :: 2 - Pre-Alpha",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.6",
+    python_requires=">=3.9",
     install_requires=REQS_CORE,
     extras_require={"full": RES_FULL},
 )
